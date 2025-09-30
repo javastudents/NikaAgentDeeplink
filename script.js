@@ -1,13 +1,25 @@
 document.getElementById('openAppButton').addEventListener('click', function() {
-    // Generate random device_id, conversation_id, and log_id for demonstration
-    const device_id = Math.random().toString(36).substring(2, 15);
-    const conversation_id = Math.random().toString(36).substring(2, 15);
-    const log_id = Math.random().toString(36).substring(2, 15);
+    const urlParams = new URLSearchParams(window.location.search);
+    const params = new URLSearchParams();
+
+    const device_id = urlParams.get('device_id');
+    if (device_id) {
+        params.append('device_id', device_id);
+    }
+
+    const conversation_id = urlParams.get('conversation_id');
+    if (conversation_id) {
+        params.append('conversation_id', conversation_id);
+    }
+
+    const log_id = urlParams.get('log_id');
+    if (log_id) {
+        params.append('log_id', log_id);
+    }
 
     const baseLink = 'snssdk1180://';
-    const params = `?device_id=${device_id}&conversation_id=${conversation_id}&log_id=${log_id}`;
-
-    const deeplink = baseLink + params;
+    const paramString = params.toString();
+    const deeplink = baseLink + (paramString ? '?' + paramString : '');
 
     // Attempt to open the app
     window.location.href = deeplink;
