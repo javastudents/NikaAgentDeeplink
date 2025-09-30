@@ -1,6 +1,14 @@
 document.getElementById('openAppButton').addEventListener('click', function() {
     const urlParams = new URLSearchParams(window.location.search);
+
+    const scene = urlParams.get('scene');
+    if (!scene) {
+        alert('缺少 scene 参数');
+        return;
+    }
+
     const params = new URLSearchParams();
+    params.append('scene', scene);
 
     const device_id = urlParams.get('device_id');
     if (device_id) {
@@ -17,7 +25,7 @@ document.getElementById('openAppButton').addEventListener('click', function() {
         params.append('log_id', log_id);
     }
 
-    const baseLink = 'capcut://';
+    const baseLink = 'capcut://nika.agent';
     const paramString = params.toString();
     const deeplink = baseLink + (paramString ? '?' + paramString : '');
 
