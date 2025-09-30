@@ -28,14 +28,16 @@ document.getElementById('openAppButton').addEventListener('click', function() {
     const userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
     if (/android/i.test(userAgent)) {
-        // For Android, you can redirect to the Play Store
+        // For Android, redirect to a download page as Google Play is not available in China.
         setTimeout(function() {
-            window.location.href = 'https://play.google.com/store/apps/details?id=com.lemon.lvoverseas';
+            alert('应用未安装，即将跳转到下载页面。');
+            window.location.href = 'https://www.capcut.com/';
         }, 2500);
     } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-        // For iOS, you can redirect to the App Store
+        // For iOS, redirect to the App Store.
         setTimeout(function() {
-            window.location.href = 'https://apps.apple.com/app/id1500855883'; // Example App Store URL
+            alert('应用未安装，即将跳转到 App Store。');
+            window.location.href = 'https://apps.apple.com/app/id1500855883'; // CapCut App Store URL
         }, 2500);
     }
 });
