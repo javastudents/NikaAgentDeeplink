@@ -17,7 +17,7 @@ document.getElementById('openAppButton').addEventListener('click', function() {
         params.append('log_id', log_id);
     }
 
-    const baseLink = 'snssdk1180://';
+    const baseLink = 'capcut://';
     const paramString = params.toString();
     const deeplink = baseLink + (paramString ? '?' + paramString : '');
 
